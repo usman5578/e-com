@@ -5,7 +5,7 @@ import ProductType from '@/Components/views/ProductType'
 
 
 async function fetchAllProductsData(){
-  let res = await fetch(`${BASE_PATH_FORAPI}/api/products`)
+  // let res = await fetch(`${BASE_PATH_FORAPI}/api/products`)
 
 //   if(!res.ok){
 //     throw new Error("Failed to fetch")
