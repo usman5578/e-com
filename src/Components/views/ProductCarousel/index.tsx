@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ProductCarousel = () => {
+const ProductCarousel = ({ProductData}:any) => {
   return (
-    <div>ProductCarousel</div>
+    <div>{ProductData[0].productName}</div>
   )
 }
 
