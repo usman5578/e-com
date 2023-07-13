@@ -7,9 +7,18 @@ const nextConfig = {
                 hostname:"full-stack-ecommerce-clothing-web.vercel.app",
                 port:"",
                 pathname: "/**"
+            },
+            {
+                protocol:"https",
+                hostname:"cdn.sanity.io",
+                port:"",
+                pathname: "/**"
             }
         ]
-    }
+    },
+
+    
+    
 }
 
 module.exports = nextConfig
