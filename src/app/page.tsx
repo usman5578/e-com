@@ -11,7 +11,7 @@ async function fetchAllProductsData(){
 //     throw new Error("Failed to fetch")
 //   }
 //   return res.json();
-return {response:"Hi"} 
+return {response:"Hi hello"} 
 }
 
 export default async function Home() {
