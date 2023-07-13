@@ -14,7 +14,7 @@ function urlFor(source:any){
 }
 
 const Card:FC<{singleProductData:ProductType}> = ({singleProductData}) => {
- console.log(singleProductData.slug.current)
+
   return (
     <Link href={`Catalog/${singleProductData.slug.current}`}>
     <div className='border-4  max-w-sm min-w-[28rem] hover:scale-110 duration-300 space-y-3'>

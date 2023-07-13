@@ -1,8 +1,8 @@
 import { FC } from "react";
 
-const Catalog: FC<{ Params: { slug: string } }> = ({ Params }) => {
+export default async  function Catalog({ params }: { params: { slug: string } }) {
   
-  return <div>Catalog</div>;
+  return <div>{params.slug}</div>;
 };
 
-export default Catalog;
+
