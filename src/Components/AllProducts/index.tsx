@@ -15,7 +15,7 @@ export default class AllProductsCompo extends Component<{ProductData:propsType}>
         return (
             <div className="grid grid-cols-3" onClick={this.getData}>{this.props.ProductData.response.map((items:any, index:number)=>(
                 <div >
-                    <Card singleProductData={items}/>
+                    <Card key={index} singleProductData={items}/>
                 </div>
             ))}</div>
         )
