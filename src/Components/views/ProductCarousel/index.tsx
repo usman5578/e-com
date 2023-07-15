@@ -46,7 +46,7 @@ const ProductCarousel: FC<{ProductData:ProductType[]}> = ({ProductData}) => {
         initialX = e.touches[0].clientX;
     };
 
-let dataToItrate=ProductData.slice(0,15);
+
     return (
       <>
       <div className="text-center space-y-4">
@@ -62,7 +62,7 @@ let dataToItrate=ProductData.slice(0,15);
             onTouchStart={mouseDownForMobile}
             onTouchEnd={mouseUp}
             >
-            {dataToItrate.map((item: ProductType, index: number) => (
+            {ProductData.map((item: ProductType, index: number) => (
               <Card key={index + 4} singleProductData={item} />
               ))}
         </div>

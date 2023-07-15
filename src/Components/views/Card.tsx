@@ -17,7 +17,7 @@ const Card:FC<{singleProductData:ProductType}> = ({singleProductData}) => {
 
   return (
     <Link href={`Catalog/${singleProductData.slug.current}`}>
-    <div className='border-4  max-w-sm min-w-[28rem] hover:scale-110 duration-300 space-y-3'>
+    <div className='max-w-sm min-w-[28rem] hover:scale-110 duration-300 space-y-3'>
         <div className='relative w-full '>
           <div className='absolute inset-0 z-10 '/>
         <Image  width={500} height={500} src={urlFor(singleProductData.image[0]).width(1000).height(1000).url()} alt={singleProductData.image[0].alt}/>
