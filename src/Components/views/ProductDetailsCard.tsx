@@ -51,6 +51,7 @@ const ProductDetailsCard: FC<{ data: ProductType }> = ({ data }) => {
             if (subitem._key == selectedImagePreview) {
               return (
                 <Image
+                key={index}
                   width={1000}
                   height={1000}
                   alt={subitem.alt}
