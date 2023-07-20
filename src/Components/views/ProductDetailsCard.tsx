@@ -1,10 +1,11 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import { ProductType, imagesType } from "../utils/ProductDataTypes";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "../../../sanity/lib/client";
 import Image from "next/image";
 import { BsCart2 } from "react-icons/bs";
+import { cartContext } from "@/global/context";
 
 const builder = imageUrlBuilder(client);
 
@@ -13,19 +14,36 @@ function urlFor(source: any) {
 }
 
 const ProductDetailsCard: FC<{ data: ProductType }> = ({ data }) => {
+  let { state, dispatch } = useContext(cartContext);
+  console.log(dispatch);
+
   const [selectedImagePreview, setSelectedImagePreview] = useState<string>(
     data.image[0]._key
   );
+
   const [quantity, setQuantity] = useState(1);
-  const incrementQuanity = () => setQuantity(quantity + 1);
+
+  const incrementQuanity = () => {
+    setQuantity(quantity + 1);
+  };
+
   const decrementQuantity = () => {
     if (quantity == 0) {
     } else {
       setQuantity(quantity - 1);
     }
   };
+
+  function handleAddtoCart() {
+    let dataToAddInCart = {
+      productId: data._id,
+      quantity: quantity,
+    };
+    dispatch({ payload: "addToCart", data: dataToAddInCart });
+  }
+
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center">
+    <div className="flex flex-col lg:flex-row justify-center items-center py-16">
       {/* left  */}
       <div className="flex gap-x-4 md:gap-x-8">
         {/* left  */}
@@ -51,7 +69,7 @@ const ProductDetailsCard: FC<{ data: ProductType }> = ({ data }) => {
             if (subitem._key == selectedImagePreview) {
               return (
                 <Image
-                key={index}
+                  key={index}
                   width={1000}
                   height={1000}
                   alt={subitem.alt}
@@ -103,14 +121,15 @@ const ProductDetailsCard: FC<{ data: ProductType }> = ({ data }) => {
             </div>
           </div>
         </div>
-        <div className="flex gap-x-8 items-center"> 
-        <button className="flex justify-center items-center  text-white bg-gray-900 border border-gray-300 mt-2 md:mt-0  px-4 py-2">
-        <BsCart2/>
-        &nbsp;
-        &nbsp;
-          AddtoCart
+        <div className="flex gap-x-8 items-center">
+          <button
+            onClick={() => handleAddtoCart()}
+            className="flex justify-center items-center  text-white bg-gray-900 border border-gray-300 mt-2 md:mt-0  px-4 py-2"
+          >
+            <BsCart2 />
+            &nbsp; &nbsp; AddtoCart
           </button>
-        <p className="text-2xl font-semibold">${data.price}.00</p>
+          <p className="text-2xl font-semibold">${data.price}.00</p>
         </div>
       </div>
     </div>
