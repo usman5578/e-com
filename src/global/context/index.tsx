@@ -15,6 +15,7 @@ const ContextWrapper = ({ children }: { children: ReactNode }) => {
   };
 
   const [state, dispatch] = useReducer(cartReducer, initializerOfCart);
+
   useEffect(() => {
     let cart = localStorage.getItem("cart") as string;
     if (cart === null) {
@@ -25,7 +26,7 @@ const ContextWrapper = ({ children }: { children: ReactNode }) => {
   });
 
   useEffect(() => {
-    localStorage.setItem("Cart", JSON.stringify(state.cart))
+    localStorage.setItem("cart", JSON.stringify(state.cart))
   }, [state.cart])
   
 

@@ -16,8 +16,7 @@ export function cartReducer(state: any, action: any) {
         cart: [...state.cart, action.data],
       };
     }else{
-        let dataToStoreAgain = state.cart.filter((item:any)=>item.productId !== response.productId);
-        
+        let dataToStoreAgain = state.cart.filter((items:any)=>items.productId!=response.productId);
         return {
             cart:[...dataToStoreAgain,action.data]
         }
